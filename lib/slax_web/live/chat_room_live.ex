@@ -77,6 +77,11 @@ defmodule SlaxWeb.ChatRoomLive do
   	{:ok, assign(socket, hide_topic?: false, room: room, rooms: rooms)}
   end
   
+  def handle_params(params, _session, socket) do
+    IO.puts("handle_params #{inspect(params)} (connected: #{connected?(socket)})")
+    {:noreply, socket}
+  end
+  
   def handle_event("toggle-topic", _params, socket) do
   	# Use update when an assign's new value depends on its old value
   	{:noreply, update(socket, :hide_topic?, &(!&1))}
