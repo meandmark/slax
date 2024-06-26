@@ -20,6 +20,7 @@ defmodule SlaxWeb.ChatRoomLive do
   end
   
   def mount(_params, _session, socket) do
+  	# This room variable is passed to the render function.
   	room = Room
   	|> Repo.all()
 		|> List.first()
