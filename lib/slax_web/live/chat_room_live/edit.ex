@@ -50,6 +50,7 @@ defmodule SlaxWeb.ChatRoomLive.Edit do
     changeset =
     	socket.assigns.room
     	|> Chat.change_room(room_params)
+    	|> Map.put(:action, :validate)
     	
     {:noreply, assign_form(socket, changeset)}
   end
