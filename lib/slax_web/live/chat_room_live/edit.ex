@@ -46,6 +46,19 @@ defmodule SlaxWeb.ChatRoomLive.Edit do
     assign(socket, :form, to_form(changeset))
   end
   
+  def handle_event("save-room", %{"room" => room_params}, socket) do
+    case Chat.update_room(socket.assigns.room, room_params) do
+      {:ok, room} ->
+        {:noreply,
+         socket
+         |> put_flash(:info, "Room updated successfully")
+         |> push_navigate(to: ~p"/rooms/#{room}")}
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        {:noreply, assign_form(socket, changeset)}
+    end
+  end
+  
   def handle_event("validate-room", %{"room" => room_params}, socket) do
     changeset =
     	socket.assigns.room
