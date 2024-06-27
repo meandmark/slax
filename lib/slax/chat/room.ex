@@ -5,6 +5,7 @@ defmodule Slax.Chat.Room do
   schema "rooms" do
     field :name, :string
     field :topic, :string
+    field :order, :integer
 
     timestamps(type: :utc_datetime)
   end
