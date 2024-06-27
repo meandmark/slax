@@ -55,8 +55,4 @@ defmodule SlaxWeb.ChatRoomLive.Edit do
     {:noreply, assign_form(socket, changeset)}
   end
   
-  defp assign_form(socket, %Ecto.Changeset{} = changeset) do
-    assign(socket, :form,to_form(changeset))
-  end
-  
 end
