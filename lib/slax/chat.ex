@@ -22,4 +22,10 @@ defmodule Slax.Chat do
     |> Repo.insert()
   end
   
+  def update_room(%Room{} = room, attrs) do
+    room
+    |> Room.changeset(attrs)
+    |> Repo.update()
+  end
+  
 end
