@@ -2,7 +2,7 @@ defmodule SlaxWeb.ChatRoomLive do
   use SlaxWeb, :live_view
   
   alias Slax.Chat
-  alias Slax.Chat.Room
+  alias Slax.Chat.{Message, Room}
   
   def render(assigns) do
     ~H"""
@@ -89,8 +89,29 @@ defmodule SlaxWeb.ChatRoomLive do
     </ul>
 
     	</div>
+    	<div class="flex flex-col flext-grow overflow-auto">
+    		<.message :for={message <- @messages} message={message} />
+    	</div>
     </div>
     """
+  end
+  
+  attr :message, Message, required: true
+  
+  defp message(assigns) do
+    ~H"""
+   <div class="relative flex px-4 py-3">
+     <div class="h-10 w-10 rounded flex-shrink-0 bg-slate-300"></div>
+     <div class="ml-2">
+       <div class="-mt-1">
+         <.link class="text-sm font-semibold hover:underline">
+           <span>User</span>
+         </.link>
+         <p class="text-sm"><%= @message.body %></p>
+       </div>
+     </div>
+   </div>
+   """
   end
   
   attr :active, :boolean, required: true
