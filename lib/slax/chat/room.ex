@@ -18,5 +18,6 @@ defmodule Slax.Chat.Room do
     |> validate_format(:name, ~r/\A[a-z0-9-]+\z/,
     	message: "can only contain lowercase letters, numbers, and dahses")
     |> validate_length(:topic, max: 200)
+    |> unique_constraint(:name)
   end
 end
