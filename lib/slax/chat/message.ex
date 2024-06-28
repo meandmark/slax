@@ -3,8 +3,9 @@ defmodule Slax.Chat.Message do
   import Ecto.Changeset
 
   schema "messages" do
-
+    field :body, :string
     field :user_id, :id
+    field :room_id, :id
 
     timestamps(type: :utc_datetime)
   end
@@ -12,7 +13,7 @@ defmodule Slax.Chat.Message do
   @doc false
   def changeset(message, attrs) do
     message
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:body])
+    |> validate_required([:body])
   end
 end
