@@ -89,9 +89,9 @@ defmodule SlaxWeb.ChatRoomLive do
     </ul>
 
     	</div>
-    	<div class="flex flex-col flext-grow overflow-auto">
-    		<.message :for={message <- @messages} message={message} />
-    	</div>
+    	<div class="flex flex-col flex-grow overflow-auto">
+       <.message :for={message <- @messages} message={message} />
+     </div>
     </div>
     """
   end
@@ -99,7 +99,7 @@ defmodule SlaxWeb.ChatRoomLive do
   attr :message, Message, required: true
   
   defp message(assigns) do
-    ~H"""
+   ~H"""
    <div class="relative flex px-4 py-3">
      <div class="h-10 w-10 rounded flex-shrink-0 bg-slate-300"></div>
      <div class="ml-2">
@@ -112,8 +112,8 @@ defmodule SlaxWeb.ChatRoomLive do
      </div>
    </div>
    """
-  end
-  
+	end
+	  
   attr :active, :boolean, required: true
   attr :room, Room, required: true
   
@@ -159,7 +159,6 @@ defmodule SlaxWeb.ChatRoomLive do
   			page_title: "#" <> room.name,
   			room: room
   	)}
-  	
   end
   
   def handle_event("toggle-topic", _params, socket) do
