@@ -112,7 +112,8 @@ defmodule SlaxWeb.ChatRoomLive do
      </div>
    </div>
    """
-  
+	end
+	  
   attr :active, :boolean, required: true
   attr :room, Room, required: true
   
