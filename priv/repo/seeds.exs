@@ -16,12 +16,12 @@ alias Slax.Chat.Message
 alias Slax.Repo
 
 names = [
-	"Aragorn",
-	"Boromir",
-	"Elrond",
-	"Frodo",
-	"Gimli",
-	"Legolas"
+  "Aragorn",
+  "Boromir",
+  "Elrond",
+  "Frodo",
+  "Gimli",
+  "Legolas"
 ]
 
 pw = "TheFellowship"
