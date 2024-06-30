@@ -40,4 +40,9 @@ defmodule Slax.Chat do
     |> Repo.all()
   end
   
+  def change_message(message, attrs \\ %{}) do
+    Message.changeset(message, attrs)
+  end
+  
+  
 end
