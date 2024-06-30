@@ -160,13 +160,20 @@ defmodule SlaxWeb.ChatRoomLive do
   	messages = Chat.list_messages_in_room(room)
   	
   	{:noreply,
-  		assign(socket,
-  			hide_topic?: false,
-  			messages: messages,
-  			page_title: "#" <> room.name,
-  			room: room
-  	)}
+			socket
+			|> assign(
+				hide_topic?: false,
+				messages: messages,
+				page_title: "#" <> room.name,
+				room: room
+			)
+			|> assign_message_form(Chat.change_message(%Message{}))}
   end
+  
+  defp assign_message_form(socket, changeset) do
+    assign(socket, :new_message_form, to_form(changeset))
+  end
+  
   
   def handle_event("toggle-topic", _params, socket) do
   	# Use update when an assign's new value depends on its old value
