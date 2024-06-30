@@ -174,10 +174,14 @@ defmodule SlaxWeb.ChatRoomLive do
     assign(socket, :new_message_form, to_form(changeset))
   end
   
-  
   def handle_event("toggle-topic", _params, socket) do
   	# Use update when an assign's new value depends on its old value
   	{:noreply, update(socket, :hide_topic?, &(!&1))}
   end
   
+  def handle_event("validate-message", %{"message" => message_params}, socket) do
+    changeset = Chat.change_message(%Message{}, message_params)
+
+    {:noreply, assign_message_form(socket, changeset)}
+  end
 end
