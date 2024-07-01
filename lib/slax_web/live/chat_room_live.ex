@@ -131,6 +131,7 @@ defmodule SlaxWeb.ChatRoomLive do
          <.link class="text-sm font-semibold hover:underline">
         	<span><%= username(@message.user) %></span>
          </.link>
+         <span class="ml-1 text-xs text-gray-500"><%= message_timestamp(@message) %></span>
          <p class="text-sm"><%= @message.body %></p>
        </div>
      </div>
