@@ -146,6 +146,10 @@ defmodule SlaxWeb.ChatRoomLive do
 	  |> String.capitalize()
 	end
 	
+	defp message_timestamp(message) do
+	  message.inserted_at
+	end
+	
   attr :active, :boolean, required: true
   attr :room, Room, required: true
   
