@@ -89,8 +89,8 @@ defmodule SlaxWeb.ChatRoomLive do
     </ul>
 
     	</div>
-    	<div class="flex flex-col flex-grow overflow-auto">
-       <.message :for={message <- @messages} message={message} />
+    	<div id="room-messages" class="flex flex-col flex-grow overflow-auto" phx-update="stream">
+        <.message :for={{dom_id, message} <- @streams.messages} dom_id={dom_id} message={message} />
      </div>
      
      <div class="h-12 bg-white px-4 pb-4">
