@@ -206,7 +206,7 @@ defmodule SlaxWeb.ChatRoomLive do
     	case Chat.create_message(room, message_params, current_user) do
     	  {:ok, message} ->
     	  	socket
-    	  	|> update(:messages, &(&1 ++ [message]))
+    	  	|> stream_insert(:messages, message)
     	  	|> assign_message_form(Chat.change_message(%Message{}))
     	  	
     	  {:error, changeset} ->
