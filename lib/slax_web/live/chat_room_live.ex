@@ -191,7 +191,7 @@ defmodule SlaxWeb.ChatRoomLive do
 				page_title: "#" <> room.name,
 				room: room
 			)
-			|> stream(:messages, messages)
+			|> stream(:messages, messages, reset: true)
 			|> assign_message_form(Chat.change_message(%Message{}))}
   end
   
