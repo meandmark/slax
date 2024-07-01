@@ -119,11 +119,12 @@ defmodule SlaxWeb.ChatRoomLive do
     """
   end
   
+  attr :dom_id, :string, required: true
   attr :message, Message, required: true
   
   defp message(assigns) do
    ~H"""
-   <div class="relative flex px-4 py-3">
+   <div id={@dom_id} class="relative flex px-4 py-3">
      <div class="h-10 w-10 rounded flex-shrink-0 bg-slate-300"></div>
      <div class="ml-2">
        <div class="-mt-1">
