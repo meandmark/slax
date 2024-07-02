@@ -1,6 +1,7 @@
 defmodule SlaxWeb.ChatRoomLive do
   use SlaxWeb, :live_view
   
+  alias Slax.Accounts.User
   alias Slax.Chat
   alias Slax.Chat.{Message, Room}
   
