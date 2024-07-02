@@ -148,6 +148,7 @@ defmodule SlaxWeb.ChatRoomLive do
 	
 	defp message_timestamp(message) do
 	  message.inserted_at
+	  |> Timex.Timexone.convert(Timex.Timezone.local())
 	  |> Timex.format!("%-l:%M %p", :strftime)
 	end
 	
