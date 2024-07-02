@@ -1,6 +1,7 @@
 defmodule SlaxWeb.ChatRoomLive do
   use SlaxWeb, :live_view
   
+  alias Slax.Accounts.User
   alias Slax.Chat
   alias Slax.Chat.{Message, Room}
   
@@ -124,6 +125,7 @@ defmodule SlaxWeb.ChatRoomLive do
     """
   end
   
+  attr :current_user, User, required: true
   attr :dom_id, :string, required: true
   attr :message, Message, required: true
   attr :timezone, :string, required: true
@@ -131,6 +133,12 @@ defmodule SlaxWeb.ChatRoomLive do
   defp message(assigns) do
    ~H"""
    <div id={@dom_id} class="relative flex px-4 py-3">
+     <button
+        :if={@current_user.id == @message.user_id}
+        class="absolute top-4 right-4 text-red-500 hover:text-red-800 cursor-pointer"
+      >
+        <.icon name="hero-trash" class="h-4 w-4" />
+      </button>
      <div class="h-10 w-10 rounded flex-shrink-0 bg-slate-300"></div>
      <div class="ml-2">
        <div class="-mt-1">
