@@ -125,7 +125,6 @@ defmodule SlaxWeb.ChatRoomLive do
     """
   end
   
-  attr :current_user, User, required: true
   attr :dom_id, :string, required: true
   attr :message, Message, required: true
   attr :timezone, :string, required: true
