@@ -51,7 +51,7 @@ defmodule Slax.Chat do
     |> Repo.insert()
   end
   
-  def delete_message_by_id(id, %Yser{id: user_id}) do
+  def delete_message_by_id(id, %User{id: user_id}) do
     message = %Message{user_id: ^user_id} = Repo.get(Message, id)
     Repo.delete(message)
   end
