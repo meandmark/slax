@@ -72,8 +72,8 @@ defmodule Slax.Chat do
   	Phoenix.PubSub.unsubscribe(@pubsub, topic(room.id))
   end
   
-  defp topic(room_id) do
-    "chat_room:#{room.id}"
+  defp topic(room_id) do 
+  	"chat_room:#{room_id}"
   end
   
 end
