@@ -48,9 +48,14 @@ defmodule Slax.Chat do
   end
   
   def create_message(room, attrs, user) do
-    %Message{room: room, user: user}
-    |> Message.changeset(attrs)
-    |> Repo.insert()
+    with {:ok, message} <-
+    	%Message{room: room, user: user}
+    	|> Message.changeset(attrs)
+    	|> Repo.insert() do
+    	  Phoenix.PubSub.broadcast!(@pubsub, topic(room.id), {:new_message, message})
+    	  {:ok, message}
+    	end
+    	
   end
   
   def delete_message_by_id(id, %User{id: user_id}) do
