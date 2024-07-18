@@ -264,4 +264,13 @@ defmodule SlaxWeb.ChatRoomLive do
 
     {:noreply, assign_message_form(socket, changeset)}
   end
+  
+  def handle_info({:new_message, message}, socket) do
+  	{:noreply, stream_insert(socket, :messages, message)}
+  end
+  
+  def handle_info({:message_deleted, message}, socket) do
+  	{:noreply, stream_delete(socket, :messages, message)}
+  end
+  
 end
