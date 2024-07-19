@@ -223,7 +223,9 @@ defmodule SlaxWeb.ChatRoomLive do
 				room: room
 			)
 			|> stream(:messages, messages, reset: true)
-			|> assign_message_form(Chat.change_message(%Message{}))}
+			|> assign_message_form(Chat.change_message(%Message{}))
+			|> push_event("scroll_messages_to_bottom", %{})}
+			
   end
   
   defp assign_message_form(socket, changeset) do
