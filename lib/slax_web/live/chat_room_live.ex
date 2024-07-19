@@ -90,15 +90,13 @@ defmodule SlaxWeb.ChatRoomLive do
     </ul>
 
     	</div>
-    	<div id="room-messages" class="flex flex-col flex-grow overflow-auto" phx-update="stream">
-        <.message
-          :for={{dom_id, message} <- @streams.messages}
-          current_user={@current_user}
-          dom_id={dom_id}
-          message={message}
-          timezone={@timezone}
-        />
-     </div>
+    	
+    	<div
+    		id="room-messages"
+    		class="flex flex-col flex-grow overflow-auto"
+    		phx-hook="RoomMessages"
+    		phx-update="stream"
+    	>
      
      <div class="h-12 bg-white px-4 pb-4">
         <.form
