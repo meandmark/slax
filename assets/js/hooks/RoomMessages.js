@@ -4,4 +4,4 @@ const RoomMessages = {
 		}
 };
 
-export default RoomMessages
+export default RoomMessages;
