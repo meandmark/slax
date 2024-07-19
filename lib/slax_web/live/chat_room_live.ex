@@ -114,6 +114,7 @@ defmodule SlaxWeb.ChatRoomLive do
             name={@new_message_form[:body].name}
             placeholder={"Message ##{@room.name}"}
             phx-debounce
+            phx_hook="ChatMessageTextArea"
             rows="1"
           ><%= Phoenix.HTML.Form.normalize_value("textarea", @new_message_form[:body].value) %></textarea>
           <button class="flex-shrink flex items-center justify-center h-6 w-6 rounded hover:bg-slate-200">
