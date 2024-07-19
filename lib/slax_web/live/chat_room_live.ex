@@ -97,6 +97,7 @@ defmodule SlaxWeb.ChatRoomLive do
     		phx-hook="RoomMessages"
     		phx-update="stream"
     	>
+    	</div>
      
      <div class="h-12 bg-white px-4 pb-4">
         <.form
