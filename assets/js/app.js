@@ -25,7 +25,7 @@ import ChatMessageTextarea from ".hooks/ChatMessageTextarea"
 import RoomMessages from "./hooks/RoomMessages"
 
 const hooks = {
-	ChatMessageTextarea
+	ChatMessageTextarea,
 	RoomMessages,
 }
 
