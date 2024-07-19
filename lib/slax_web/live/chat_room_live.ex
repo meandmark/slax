@@ -240,6 +240,7 @@ defmodule SlaxWeb.ChatRoomLive do
     assign(socket, :new_message_form, to_form(changeset))
   end
   
+  # The %{"id" => id} expression is a map with the key "id" and the value being the id of the message to delete.
   def handle_event("delete-message", %{"id" => id}, socket) do
     Chat.delete_message_by_id(id, socket.assigns.current_user)
     
