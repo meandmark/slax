@@ -97,6 +97,13 @@ defmodule SlaxWeb.ChatRoomLive do
     		phx-hook="RoomMessages"
     		phx-update="stream"
     	>
+    	<.message
+          :for={{dom_id, message} <- @streams.messages}
+          current_user={@current_user}
+          dom_id={dom_id}
+          message={message}
+          timezone={@timezone}
+        />
     	</div>
      
      <div class="h-12 bg-white px-4 pb-4">
