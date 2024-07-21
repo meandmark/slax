@@ -5,6 +5,7 @@ defmodule SlaxWeb.ChatRoomLive do
   alias Slax.Accounts.User
   alias Slax.Chat
   alias Slax.Chat.{Message, Room}
+  alias SlaxWeb.OnlineUsers
   
   def render(assigns) do
     ~H"""
@@ -236,6 +237,10 @@ defmodule SlaxWeb.ChatRoomLive do
   	users = Accounts.list_users()
   	timezone = get_connect_params(socket)["timezone"]
   	
+  	if connected?(socket) do
+      OnlineUsers.track(self(), socket.assigns.current_user)
+    end
+    
   	socket =
   		socket
   		|> assign(rooms: rooms, timezone: timezone, users: users)
