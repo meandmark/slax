@@ -34,6 +34,7 @@ defmodule SlaxWeb.ChatRoomLive do
             <.user
               :for={user <- @users}
               user={user}
+              online={OnlineUsers.online?(@online_users, user.id)}
             />
           </div>
         </div>
@@ -244,6 +245,7 @@ defmodule SlaxWeb.ChatRoomLive do
   	socket =
   		socket
   		|> assign(rooms: rooms, timezone: timezone, users: users)
+  		|> assign(online_users: OnlineUsers.list())
   		
   	{:ok, socket}
   end
