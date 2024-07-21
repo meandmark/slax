@@ -18,4 +18,9 @@ defmodule SlaxWeb.OnlineUsers do
     {:ok, _} = Presence.track(pid, @topic, user.id, %{})
     :ok
   end
+  
+  def online?(online_users, user_id) do
+    Map.get(online_users, user_id, 0) > 0
+  end
+  
 end
