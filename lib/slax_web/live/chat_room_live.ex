@@ -149,6 +149,7 @@ defmodule SlaxWeb.ChatRoomLive do
     """
   end
   
+  # attr annotates the function components with information about what the assigns should be.
   attr :current_user, User, required: true
   attr :dom_id, :string, required: true
   attr :message, Message, required: true
