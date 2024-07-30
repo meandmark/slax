@@ -15,8 +15,7 @@ defmodule SlaxWeb.ChatRoomLive.Index do
             :for={{id, room} <- @streams.rooms}
             class="cursor-pointer p-4 flex justify-between items-center group first:rounded-t last:rounded-b"
             id={id}
-            phx-click="view-room"
-            phx-value-id={room.id}
+            phx-click={JS.navigate(~p"/rooms/#{room}")}
           >
             <div>
               <div class="font-medium mb-1">
@@ -44,7 +43,4 @@ defmodule SlaxWeb.ChatRoomLive.Index do
     {:ok, socket}
   end
 
-  def handle_event("view-room", %{"id" => id}, socket) do
-    {:noreply, push_navigate(socket, to: ~p"/rooms/#{id}")}
-  end
 end
